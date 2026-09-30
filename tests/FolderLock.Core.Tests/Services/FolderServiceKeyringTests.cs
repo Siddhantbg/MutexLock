@@ -6,7 +6,7 @@ namespace FolderLock.Core.Tests.Services;
 
 public sealed class FolderServiceKeyringTests : IDisposable
 {
-    private const string Password = "lock-all-pass";
+    private static readonly string Password = $"test-{Guid.NewGuid():N}";
 
     private readonly string _root;
     private readonly FolderService _service;

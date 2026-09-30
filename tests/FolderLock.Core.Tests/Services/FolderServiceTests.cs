@@ -6,7 +6,7 @@ namespace FolderLock.Core.Tests.Services;
 
 public sealed class FolderServiceTests : IDisposable
 {
-    private const string Password = "s3cret-pass";
+    private static readonly string Password = $"test-{Guid.NewGuid():N}";
 
     private readonly string _root;
     private readonly string _folder;
@@ -92,11 +92,12 @@ public sealed class FolderServiceTests : IDisposable
     [Fact]
     public void ChangePassword_RequiresOldPassword()
     {
+        var newPassword = $"test-{Guid.NewGuid():N}";
         var record = _service.Add(_folder, Password);
-        _service.ChangePassword(record.Id, Password, "new-pass");
+        _service.ChangePassword(record.Id, Password, newPassword);
 
         Assert.Throws<FolderLockException>(() => _service.Lock(record.Id, Password));
-        _service.Lock(record.Id, "new-pass");
+        _service.Lock(record.Id, newPassword);
         Assert.True(_service.GetAll().Single().IsLocked);
     }
 

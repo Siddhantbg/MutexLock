@@ -6,7 +6,7 @@ namespace FolderLock.Core.Tests.Services;
 
 public sealed class FolderServiceEncryptionTests : IDisposable
 {
-    private const string Password = "encrypt-pass";
+    private static readonly string Password = $"test-{Guid.NewGuid():N}";
 
     private readonly string _root;
     private readonly string _folder;
@@ -98,10 +98,11 @@ public sealed class FolderServiceEncryptionTests : IDisposable
     [Fact]
     public void ChangePassword_BeforeLocking_UsesNewPasswordForVault()
     {
+        var newPassword = $"test-{Guid.NewGuid():N}";
         var record = _service.Add(_folder, Password, encrypt: true, out var recoveryCode);
-        _service.ChangePassword(record.Id, Password, "new-pass");
+        _service.ChangePassword(record.Id, Password, newPassword);
 
-        _service.Lock(record.Id, "new-pass");
+        _service.Lock(record.Id, newPassword);
         _service.Unlock(record.Id, recoveryCode!);
 
         Assert.Equal("secret content", File.ReadAllText(Path.Combine(_folder, "data.txt")));

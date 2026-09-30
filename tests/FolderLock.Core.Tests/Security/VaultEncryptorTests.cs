@@ -5,7 +5,7 @@ namespace FolderLock.Core.Tests.Security;
 
 public sealed class VaultEncryptorTests : IDisposable
 {
-    private const string Password = "vault-password";
+    private static readonly string Password = $"test-{Guid.NewGuid():N}";
     private const int Iterations = 1000;
 
     private readonly string _root;

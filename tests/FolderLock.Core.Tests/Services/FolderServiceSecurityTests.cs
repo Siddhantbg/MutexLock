@@ -6,7 +6,7 @@ namespace FolderLock.Core.Tests.Services;
 
 public sealed class FolderServiceSecurityTests : IDisposable
 {
-    private const string Password = "correct-password";
+    private static readonly string Password = $"test-{Guid.NewGuid():N}";
 
     private readonly string _root;
     private readonly string _folder;

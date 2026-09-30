@@ -4,7 +4,7 @@ namespace FolderLock.Core.Tests.Security;
 
 public class PasswordHasherTests
 {
-    private const string Password = "correct horse battery staple";
+    private static readonly string Password = $"test-{Guid.NewGuid():N}";
 
     [Fact]
     public void Hash_UsesRandomSalt()
@@ -38,12 +38,19 @@ public class PasswordHasherTests
     [Theory]
     [InlineData("")]
     [InlineData("wrong")]
-    [InlineData("Correct horse battery staple")]
     public void Verify_ReturnsFalseForWrongPassword(string candidate)
     {
         var stored = PasswordHasher.Hash(Password, iterations: 1000);
 
         Assert.False(PasswordHasher.Verify(candidate, stored));
+    }
+
+    [Fact]
+    public void Verify_IsCaseSensitive()
+    {
+        var stored = PasswordHasher.Hash(Password, iterations: 1000);
+
+        Assert.False(PasswordHasher.Verify(Password.ToUpperInvariant(), stored));
     }
 
     [Fact]

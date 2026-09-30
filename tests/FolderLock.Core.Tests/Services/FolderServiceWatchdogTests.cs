@@ -6,7 +6,7 @@ namespace FolderLock.Core.Tests.Services;
 
 public sealed class FolderServiceWatchdogTests : IDisposable
 {
-    private const string Password = "watchdog-pass";
+    private static readonly string Password = $"test-{Guid.NewGuid():N}";
 
     private readonly string _root;
     private readonly string _folder;
