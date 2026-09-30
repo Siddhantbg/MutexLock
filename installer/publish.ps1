@@ -17,17 +17,17 @@ $publishDir = Join-Path $root "src\FolderLock.App\bin\$Configuration\$tfm\publis
 
 New-Item -ItemType Directory -Force -Path $publishDir | Out-Null
 
-Write-Host "发布主程序 -> $publishDir  ($helloFlag)" -ForegroundColor Cyan
+Write-Host "Publishing app -> $publishDir  ($helloFlag)" -ForegroundColor Cyan
 dotnet publish $appProject -c $Configuration -p:PublishProfile=win-x64 $helloFlag -o $publishDir
 
-Write-Host "发布守护服务 -> $publishDir" -ForegroundColor Cyan
+Write-Host "Publishing guard service -> $publishDir" -ForegroundColor Cyan
 dotnet publish $serviceProject -c $Configuration -r win-x64 --self-contained false -o $publishDir
 
 if (-not [string]::IsNullOrWhiteSpace($CertThumbprint)) {
-    Write-Host "对可执行文件进行代码签名..." -ForegroundColor Cyan
+    Write-Host "Code-signing executables..." -ForegroundColor Cyan
     $signtool = (Get-Command signtool.exe -ErrorAction SilentlyContinue).Source
     if (-not $signtool) {
-        Write-Warning "未找到 signtool.exe（属于 Windows SDK），跳过签名。"
+        Write-Warning "signtool.exe (part of the Windows SDK) not found; skipping signing."
     }
     else {
         foreach ($exe in Get-ChildItem $publishDir -Filter *.exe) {
@@ -36,5 +36,5 @@ if (-not [string]::IsNullOrWhiteSpace($CertThumbprint)) {
     }
 }
 
-Write-Host "完成。产物目录：$publishDir" -ForegroundColor Green
+Write-Host "Done. Output folder: $publishDir" -ForegroundColor Green
 Get-ChildItem $publishDir -Filter *.exe | Select-Object Name, Length

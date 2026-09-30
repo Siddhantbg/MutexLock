@@ -9,7 +9,7 @@ behind a clean Fluent (Windows 11 style) UI.
 > The Windows project/namespace is `FolderLock` for historical reasons; the
 > product is published as **VaultLock**.
 
-[中文文档 / Chinese README](README.zh-CN.md) · [Docs](docs/wiki/Home.md) · [Wiki](https://github.com/oMrCat/VaultLock/wiki)
+[Documentation](docs/wiki/Home.md)
 
 ---
 
@@ -73,7 +73,7 @@ behind a clean Fluent (Windows 11 style) UI.
 - Fluent (Windows 11) UI with light/dark/system themes, sidebar filters, live
   search, sortable list, detail pane and an empty state.
 - Password strength meter and generator.
-- **English / 简体中文** UI.
+- **English** UI (Simplified Chinese also available).
 - Right-click Explorer integration and single-instance command forwarding.
 
 ---
@@ -178,4 +178,4 @@ overlay logic.
 
 ## License
 
-[MIT](LICENSE) © 2026 oMrCat
+Released under the [MIT License](LICENSE).

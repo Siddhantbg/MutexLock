@@ -1,5 +1,5 @@
 param(
-    [string]$Repo = "oMrCat/VaultLock",
+    [string]$Repo = "Siddhantbg/MutexLock",
     [string]$WikiDir = ""
 )
 
@@ -34,10 +34,10 @@ try {
     try
     {
         if (-not (git config user.email)) {
-            git config user.email "130645935+oMrCat@users.noreply.github.com"
+            git config user.email "siddhant.bhagat004@gmail.com"
         }
         if (-not (git config user.name)) {
-            git config user.name "oMrCat"
+            git config user.name "Siddhantbg"
         }
 
         git add -A

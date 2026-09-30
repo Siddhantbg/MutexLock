@@ -6,7 +6,7 @@
 - Windows 10/11
 
 ```powershell
-git clone https://github.com/oMrCat/VaultLock.git
+git clone https://github.com/Siddhantbg/MutexLock.git
 cd VaultLock
 
 dotnet build

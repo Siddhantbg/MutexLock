@@ -10,7 +10,7 @@
 
 ## From a release (recommended)
 
-1. Open [Releases](https://github.com/oMrCat/VaultLock/releases).
+1. Open [Releases](https://github.com/Siddhantbg/MutexLock/releases).
 2. Pick a build:
    - **`v1.0.0`** — full build, includes the optional Windows Hello unlock gate
      (larger single file, ~35 MB).

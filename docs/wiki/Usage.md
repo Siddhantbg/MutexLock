@@ -36,7 +36,7 @@ lock time, with buttons for **Open**, **Lock**, **Unlock**, **Change password**,
 | Require Windows Hello on unlock | Optional biometric/PIN gate (full build only) |
 | Install / Uninstall guard service | Background re-lock service (admin) |
 | Theme ▸ | Follow system / Dark / Light |
-| Language ▸ | Follow system / 简体中文 / English |
+| Language ▸ | Follow system / Simplified Chinese / English |
 | View log | Audit trail with CSV export |
 | Verify / salvage vault | Check an encrypted container; recover what is possible |
 | Export / Import recovery kit | Password-protected `.flkit` backup |

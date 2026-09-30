@@ -1,6 +1,6 @@
-# FolderLock 安装包脚本（Inno Setup 6）
-# 使用前先执行：dotnet publish src\FolderLock.App\FolderLock.App.csproj -c Release -p:PublishProfile=win-x64
-# 然后用 Inno Setup Compiler 打开本文件编译，或命令行：ISCC.exe installer\FolderLock.iss
+# FolderLock installer script (Inno Setup 6)
+# First run: dotnet publish src\FolderLock.App\FolderLock.App.csproj -c Release -p:PublishProfile=win-x64
+# Then open this file in the Inno Setup Compiler, or from the command line: ISCC.exe installer\FolderLock.iss
 
 #define AppName "FolderLock"
 #define AppVersion "1.0.0"
@@ -26,10 +26,10 @@ ArchitecturesInstallIn64BitMode=x64compatible
 UninstallDisplayIcon={app}\{#AppExeName}
 
 [Languages]
-Name: "chinesesimplified"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"
+Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
-Name: "desktopicon"; Description: "创建桌面快捷方式"; GroupDescription: "附加任务:"
+Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Additional tasks:"
 
 [Files]
 Source: "{#PublishDir}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
@@ -39,7 +39,7 @@ Name: "{group}\{#AppName}"; Filename: "{app}\{#AppExeName}"
 Name: "{autodesktop}\{#AppName}"; Filename: "{app}\{#AppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\{#AppExeName}"; Description: "启动 {#AppName}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\{#AppExeName}"; Description: "Launch {#AppName}"; Flags: nowait postinstall skipifsilent
 
 [UninstallRun]
 Filename: "{app}\{#AppExeName}"; Parameters: "--uninstall-shell"; Flags: runhidden; RunOnceId: "CleanupShellMenu"

@@ -8,4 +8,3 @@
 - [Guard Service](Guard-Service)
 - [Building from Source](Building-from-Source)
 - [FAQ](FAQ)
-- [中文文档](中文文档)
